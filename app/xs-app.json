@@ -1,0 +1,24 @@
+{
+ "welcomeFile": "purchaseorderapp/webapp/",
+ "authenticationMethod": "route",
+ "sessionTimeout": 10,
+ "routes": [
+  {
+   "source": "^/purchaseorderapp/webapp/(.*)$",
+   "target": "$1",
+   "localDir": "purchaseorderapp/webapp/",
+   "authenticationType": "xsuaa",
+   "csrfProtection": false
+  },
+  {
+   "source": "^/(.*)$",
+   "authenticationType": "xsuaa",
+   "destination": "srv-api",
+   "csrfProtection": false
+  }
+ ],
+ "logout": {
+  "logoutEndpoint": "/my/logout",
+  "logoutPage": "https://www.anubhavtrainings.com"
+ }
+}

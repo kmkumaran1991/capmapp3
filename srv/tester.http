@@ -1,0 +1,92 @@
+###Get the service document
+http://localhost:4004/odata/v4/CatalogService
+
+###Get Service metadata document
+http://localhost:4004/odata/v4/CatalogService/$metadata
+
+###Get All employee data
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+
+###Pagination - load data chunk by chunk
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$top=2&$skip=2
+
+###Filtering of data = WHERE Condition
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet?$filter=salaryAmount ge 100000
+
+###Counting Records
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/$count
+
+###GET Single Record by Key
+http://localhost:4004/odata/v4/CatalogService/EmployeeSet/02BD2137-0890-1EEA-A6C2-BB55C19847FB
+
+###POST - To Create New Employee
+POST http://localhost:4004/odata/v4/CatalogService/EmployeeSet
+Content-Type: application/json
+
+{
+  "nameFirst": "Anubhav",
+  "nameMiddle": "",
+  "nameLast": "Oberoy",
+  "nameInitials": null,
+  "sex": "M",
+  "language": "E",
+  "phoneNumber": "8448454549",
+  "email": "contact@anubhavtrainings.com",
+  "loginName": "OBEROYAN",
+  "Currency_code": "USD",
+  "salaryAmount": 100000,
+  "accountNumber": "222333444",
+  "bankId": "510000655",
+  "bankName": "ICICI Bank"
+}
+
+###Get to read the single employee
+GET http://localhost:4004/odata/v4/CatalogService/EmployeeSet/c9bea331-232d-4938-9268-88a7b32528d9
+
+###Patch to update employee data
+PATCH http://localhost:4004/odata/v4/CatalogService/EmployeeSet/807f6818-441e-4fbc-88e3-762ee7723787
+Content-Type: application/json
+
+{
+    "salaryAmount": 1000000
+}
+
+###Delete Employee data
+DELETE http://localhost:4004/odata/v4/CatalogService/EmployeeSet/c9bea331-232d-4938-9268-88a7b32528d9
+
+###Get All POs
+http://localhost:4004/odata/v4/CatalogService/POs
+
+###Get Single PO
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC38052
+
+###Get the PO and its Items data together - Associations
+http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC38052?$expand=Items,PARTNER_GUID
+
+###Calling an action
+POST http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC38052/boost
+Content-Type: application/json
+
+{}
+
+###Calling CAP fucntions
+GET http://localhost:4004/odata/v4/CatalogService/POs/74867AD200E41EDBA5D8B0C98DC38052/largestOrder()
+
+###Getting Product data from CDS View
+GET http://localhost:4004/odata/v4/MyService/ProductOrdersSet/74867AD200E41EDBA5D8B06B26EB4052
+
+###Get metadata
+GET http://localhost:4004/odata/v4/MyService/$metadata
+
+###Get the lazy loading -- to be checked by Anubhav
+GET http://localhost:4004/odata/v4/MyService/ProductOrdersSet/74867AD200E41EDBA5D8B06B26EB4052?$expand=PO_ORDERS
+
+###Complete Cusom entity which has structure from DB but logic by our own handling
+GET http://localhost:4004/odata/v4/MyService/ReadEmployeeSrv/02BD2137-0890-1EEA-A6C2-BB55C19887FB
+
+###Get All POs using adpater proxy v2
+http://localhost:4004/v2/odata/v4/CatalogService/POs
+
+###Testing Security : authorization, authentication
+http://localhost:4004/v2/odata/v4/CatalogService/EmployeeSet
+Authorization: Basic ananya:

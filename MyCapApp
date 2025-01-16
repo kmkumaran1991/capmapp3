@@ -1,0 +1,17 @@
+#clientSecret=<< Existing password/certificate removed on export >>
+#
+#Sun Dec 31 02:31:01 UTC 2023
+Type=HTTP
+clientId=sb-capmapp-5a9e5155trial-dev\!t231725
+HTML5.Timeout=60000
+HTML5.DynamicDestination=true
+Authentication=OAuth2UserTokenExchange
+WebIDEUsage=odata_gen
+Name=MyCapApp
+WebIDEEnabled=true
+tokenServiceURL=https\://5a9e5155trial.authentication.us10.hana.ondemand.com/oauth/token
+ProxyType=Internet
+URL=https\://5a9e5155trial-dev-capmapp-srv.cfapps.us10-001.hana.ondemand.com/
+tokenServiceURLType=Dedicated
+HTML5.ForwardAuthToken=true
+scope=capmapp-5a9e5155trial-dev\!Viewer

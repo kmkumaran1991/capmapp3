@@ -1,0 +1,54 @@
+{
+  "xsappname": "capapp",
+  "scopes": [
+      {
+          "name": "$XSAPPNAME.Viewer",
+          "description": "Able to view data from services"
+      },
+      {
+          "name": "$XSAPPNAME.Admin",
+          "description": "able to edit data also"
+      }
+  ],
+  "attributes": [
+      {
+          "name": "BankName",
+          "description": "Bank Name to allow row level security",
+          "valueType": "string"
+      }
+  ],
+  "role-templates": [
+      {
+          "name": "Viewer",
+          "description": "View all the employees",
+          "default-role-name": "Viewer: Authorized to Read All Employees",
+          "scope-references": [
+              "$XSAPPNAME.Viewer"
+          ],
+          "attribute-references": [
+              {
+                  "name": "BankName"
+              }
+          ]
+      },
+      {
+          "name": "Admin",
+          "description": "Edit the Employee details",
+          "scope-references": [
+              "$XSAPPNAME.Admin"
+          ]
+      }
+  ],
+  "authorities": [
+      "$ACCEPT_GRANTED_AUTHORITIES"
+  ],
+  "oauth2-configuration": {
+      "token-validity": 900,
+      "refresh-token-validity": 1800,
+      "redirect-uris": [
+        "https://*.cfapps.us10-001.hana.ondemand.com/login/callback"
+      ],
+      "autoapprove": "false"
+  },
+  "xsenableasyncservice": "true"
+}
